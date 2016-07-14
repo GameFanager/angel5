@@ -9,8 +9,10 @@ before_script:
   - cp .env.travis .env
   - travis_retry composer self-update
   - travis_retry composer install --no-interaction
+  - npm install -g gulp
   - php artisan key:generate
   - gulp
 
 script:
+  - gulp
   - vendor/bin/phpunit
