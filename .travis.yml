@@ -6,12 +6,13 @@ php:
 
 before_script:
   - mysql -e "CREATE DATABASE angel_test;"
-  - cp .env.travis .env
   - travis_retry composer self-update
   - travis_retry composer install --no-interaction
-  - bower install
+  - npm install -g bower
   - npm install
+  - bower install
   - gulp
+  - cp .env.travis .env
   - php artisan key:generate
 
 script:
